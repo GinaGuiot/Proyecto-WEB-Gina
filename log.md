@@ -28,3 +28,21 @@ Establecer un protocolo de trabajo continuo para el proyecto usando los archivos
 
 ### Próximos pasos
 Continuar la inspección del repositorio y leer los documentos de definición antes de realizar cambios funcionales.
+
+## Sesión — 2026-11-09 (creación de documentos de definición)
+
+### Objetivo
+Crear los documentos iniciales de personalidad y criterios de desarrollo solicitados.
+
+### Cambios realizados
+- Creado `personalidad.md` con una propuesta inicial de identidad, tono, experiencia de usuario y forma de colaboración.
+- Creado `criterio.md` con reglas de prioridad, revisión previa, calidad del código, accesibilidad, seguridad, verificación, Git y gestión de dudas.
+- Ambos documentos quedan como bases editables; no se han inventado requisitos específicos ni preferencias personales.
+
+### Verificación
+- Los dos archivos se han creado en la raíz de la rama `main` mediante commits de GitHub.
+- La estructura completa del proyecto y sus tecnologías todavía están pendientes de inspección.
+
+### Próximos pasos
+- Revisar y ajustar el contenido de ambos documentos según las preferencias y requisitos reales del proyecto.
+- Inspeccionar la estructura del repositorio y sus archivos funcionales antes de realizar cambios de código.
