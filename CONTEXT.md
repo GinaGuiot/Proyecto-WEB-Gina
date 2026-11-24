@@ -10,8 +10,8 @@ CHROMA convierte los datos personales de escucha de Spotify en una identidad vis
 ## Los datos
 - Fuente principal: exportación personal de Spotify.
 - Variables de interés: artista, género musical, fecha y hora de escucha, y minutos escuchados cuando estén disponibles.
-- El periodo 2018–2026 aparece en la maqueta actual; hay que confirmarlo con la exportación real.
-- No inventar artistas, géneros, minutos, recuentos ni tendencias. La maqueta usa datos ilustrativos y debe señalarlos como ejemplos hasta conectar los datos reales.
+- El periodo 2018–2026 aparece en la web publicada; hay que confirmarlo con la exportación real.
+- No inventar artistas, géneros, minutos, recuentos ni tendencias. Las visualizaciones actuales usan datos ilustrativos y los señalan como ejemplos.
 
 ## Identidad visual y web
 - Tipografía: Instrument Serif.
@@ -23,16 +23,16 @@ CHROMA convierte los datos personales de escucha de Spotify en una identidad vis
 - La zona de visualizaciones contiene tres composiciones en fichas verticales, cada una con título y explicación.
 
 ## Composiciones
-### 1. Universo de artistas — decidida
-Cada círculo representa un artista. El color representa su género musical y el tamaño depende del tiempo de escucha. Al pasar el cursor por un círculo se muestran el nombre del artista, el género y los minutos escuchados. En móvil, donde no hay cursor, la información debe poder consultarse al tocar el círculo.
+### 1. Universo de artistas — implementada
+Cada círculo representa un artista. El color representa su género musical y el tamaño depende del tiempo de escucha. Al pasar el cursor por un círculo se muestran el nombre del artista, el género y los minutos escuchados. En móvil, la información debe poder consultarse al tocar el círculo.
 
-### 2. Anillos de escucha por año — propuesta
-Una composición de anillos concéntricos, uno por año. Los puntos representan artistas; su tamaño indica el tiempo de escucha y el color, el género. Permite observar cómo cambia la escucha entre años. La propuesta temporal queda pendiente de comprobar con el periodo y los campos de la exportación.
+### 2. Anillos por año — propuesta visual implementada con datos de ejemplo
+Una composición de anillos concéntricos, uno por año. Los puntos representan artistas; su tamaño indica el tiempo de escucha y el color, el género. Permite observar cómo cambia la escucha entre años. Confirmar el periodo y los campos con la exportación real antes de considerarla definitiva.
 
-### 3. Ritmo semanal — propuesta
-Una matriz visual de días de la semana y horas del día. La intensidad representa minutos o reproducciones y el color permite filtrar o distinguir géneros. Aporta una lectura del momento en que se escucha música, diferente del mapa de artistas. Solo se desarrollará si la exportación incluye marcas de fecha y hora suficientes.
+### 3. Ritmo semanal — propuesta visual implementada con datos de ejemplo
+Una matriz de días de la semana y horas del día. La intensidad representa minutos o reproducciones y el color distingue categorías musicales. Aporta una lectura del momento en que se escucha música. Solo se podrá convertir en composición final si la exportación incluye marcas de fecha y hora suficientes.
 
-Las propuestas 2 y 3 aún no son decisiones definitivas. Confirmarlas antes de implementarlas como composiciones finales. La paleta de géneros también queda pendiente de definir a partir de los datos reales.
+Las composiciones 2 y 3 siguen siendo propuestas conceptuales pendientes de validación con datos reales y confirmación de la responsable. La paleta de géneros también queda pendiente de definir a partir de los datos.
 
 ## Referentes y criterio
 Interesan la visualización de datos con personalidad, el arte generativo y una identidad cromática comprensible. Se descartan los dashboards estadísticos convencionales y el uso de color o forma como decoración sin relación con los datos.
@@ -41,7 +41,7 @@ Interesan la visualización de datos con personalidad, el arte generativo y una 
 - El proyecto se llama CHROMA.
 - Spotify es la fuente principal de datos.
 - El género se relaciona con el color y el tiempo de escucha puede determinar el tamaño de cada círculo.
-- La web reunirá tres composiciones distintas y coherentes.
+- La web reúne tres composiciones distintas y coherentes.
 - Instrument Serif y las dos versiones del logo quedan como decisiones de identidad visual.
 
 ## Hipótesis (sin comprobar)
@@ -51,13 +51,13 @@ Interesan la visualización de datos con personalidad, el arte generativo y una 
 
 ## Web y repositorio
 - Repositorio: https://github.com/GinaGuiot/Proyecto-WEB-Gina
-- URL prevista de GitHub Pages: https://ginaguiot.github.io/Proyecto-WEB-Gina/
-- Estado: GitHub indica que Pages está habilitado, pero el index.html de la rama main sigue siendo la plantilla inicial. La URL prevista no debe considerarse una publicación confirmada de CHROMA hasta que el sitio final esté en la raíz publicada y se compruebe que carga.
+- Web publicada: https://ginaguiot.github.io/Proyecto-WEB-Gina/
+- GitHub Actions completó correctamente la compilación y el despliegue de la web el 24/11/2026.
+- La URL corresponde a la versión de CHROMA publicada desde index.html en main.
 
 ## Estado y próximos pasos
-- Concepto, nombre, tipografía, logo y estructura de dos zonas de scroll definidos.
-- Primera composición especificada; las otras dos están propuestas, pendientes de confirmación.
+- Publicadas la portada con botón «Empezar» y las tres fichas de composición.
+- Las cifras, artistas, géneros y patrones siguen siendo ejemplos; no representan todavía una exportación real.
 - Confirmar periodo y campos de la exportación de Spotify.
-- Definir géneros y paleta con datos reales.
-- Confirmar las propuestas 2 y 3.
-- Sustituir la plantilla index.html del repositorio por la web final, publicar en GitHub Pages y verificar la URL.
+- Validar las propuestas 2 y 3 y definir la paleta de géneros con datos reales.
+- Sustituir los datos de muestra cuando esté disponible la exportación.
