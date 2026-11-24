@@ -22,3 +22,8 @@ Los artistas, géneros, minutos y patrones de las visualizaciones actuales son e
 - Web publicada: https://ginaguiot.github.io/Proyecto-WEB-Gina/
 
 GitHub Actions completó correctamente el despliegue de GitHub Pages el 24/11/2026.
+
+
+## Fichas de scroll
+- [Loop 1: portada y presentación](FICHA-LOOP-1-PORTADA.md)
+- [Loop 2: composiciones visuales](FICHA-LOOP-2-COMPOSICIONES.md)
