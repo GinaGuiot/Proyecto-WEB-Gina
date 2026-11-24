@@ -86,3 +86,14 @@ Sustituir la página inicial del repositorio por la web CHROMA y mantener actual
 - El flujo «pages build and deployment» terminó con éxito para el commit de publicación.
 - URL de GitHub Pages: https://ginaguiot.github.io/Proyecto-WEB-Gina/
 - Las visualizaciones todavía usan datos de ejemplo; su validación depende de la exportación real de Spotify.
+
+
+## Sesión — 2026-11-24 (fichas de los loops)
+
+### Cambios realizados
+- Añadida FICHA-LOOP-1-PORTADA.md con la portada, el logo y el botón «Empezar».
+- Añadida FICHA-LOOP-2-COMPOSICIONES.md con la zona de visualizaciones y las tres fichas gráficas.
+- Añadidos enlaces a ambas fichas en README.md.
+
+### Verificación
+- Los dos archivos están creados en la raíz del repositorio.
