@@ -1,21 +1,235 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mi proyecto</title>
-  <!-- El nombre tiene que coincidir con el del archivo: style.css -->
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CHROMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#282828; --ink:#f2f0ec; --gray:#707070; --black:#000;
+  --c1:#ff9500; --c2:#dfff00; --c3:#00f51a; --c4:#087df5; --c5:#ef00d8; --c6:#ff080d;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Serif",Georgia,"Times New Roman",serif;font-size:1.125rem;line-height:1.5}
+
+/* logo: barras */
+.logo{display:flex;align-items:flex-end;gap:var(--gap);height:var(--lh)}
+.logo b{position:relative;isolation:isolate;display:flex;align-items:flex-end;justify-content:center;width:var(--w);height:100%;color:#000;font-weight:400;line-height:1;
+  font-size:calc(var(--w)*1.05);padding-bottom:calc(var(--w)*.02)}
+.logo b::before{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:calc(var(--h)*1%);
+  border-radius:calc(var(--w)*.28) calc(var(--w)*.28) calc(var(--w)*.04) calc(var(--w)*.04);
+  background:linear-gradient(90deg,color-mix(in srgb,var(--c) 78%,#000),var(--c) 35%,color-mix(in srgb,var(--c) 88%,#fff))}
+.logo b:nth-child(1){--c:var(--c1);--h:46}
+.logo b:nth-child(2){--c:var(--c2);--h:60}
+.logo b:nth-child(3){--c:var(--c3);--h:90}
+.logo b:nth-child(4){--c:var(--c4);--h:58}
+.logo b:nth-child(5){--c:var(--c5);--h:46}
+.logo b:nth-child(6){--c:var(--c6);--h:34}
+.logo.big{--w:clamp(44px,10vw,118px);--gap:clamp(8px,2vw,24px);--lh:clamp(190px,34vw,400px)}
+.logo.big b::before{animation:grow var(--t) ease-in-out infinite;animation-delay:var(--d)}
+.logo.big b:nth-child(1){--t:3.6s;--d:-.4s}
+.logo.big b:nth-child(2){--t:4.2s;--d:-1.9s}
+.logo.big b:nth-child(3){--t:3.9s;--d:-.9s}
+.logo.big b:nth-child(4){--t:4.6s;--d:-2.7s}
+.logo.big b:nth-child(5){--t:3.4s;--d:-1.2s}
+.logo.big b:nth-child(6){--t:4.0s;--d:-3.1s}
+@keyframes grow{0%,100%{height:calc(var(--h)*1% - 7%)}50%{height:calc(var(--h)*1% + 7%)}}
+.logo.small{--w:9px;--gap:3px;--lh:34px}
+@media (prefers-reduced-motion:reduce){.logo.big b::before{animation:none}}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:1rem;padding:.9rem clamp(1rem,4vw,3rem);background:var(--bg)}
+header a{display:flex;align-items:center;gap:.7rem;color:var(--ink);text-decoration:none}
+header a span{font-size:1.5rem;letter-spacing:.03em}
+header a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+
+.hero{min-height:calc(100svh - 70px);display:flex;flex-direction:column;justify-content:space-between;padding:2rem clamp(1rem,4vw,3rem) 2rem}
+.hero .logo{margin:auto auto 0}
+.intro{margin:2.25rem auto auto;max-width:34rem;text-align:center}
+.intro h1{margin:0 0 .6rem;font-weight:400;font-style:italic;font-size:clamp(1.6rem,3.4vw,2.2rem);line-height:1.15}
+.intro p{margin:0 0 1.5rem;color:#c9c6c0}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--ink);color:#000;text-decoration:none;font-size:1.4rem;line-height:1;padding:.8rem 1.6rem;border-radius:999px;transition:background .2s}
+.btn:hover{background:var(--c1)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.hero footer{display:flex;justify-content:space-between;color:#c9c6c0;font-size:1.05rem}
+
+section.comp{padding:3rem clamp(1rem,4vw,3rem) 4rem}
+.stage{position:relative;width:100%;height:min(78svh,720px);background:var(--black);border-radius:2rem;overflow:hidden}
+canvas{display:block;width:100%;height:100%}
+.cap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,28rem);gap:1rem 3rem;margin-top:1.25rem}
+.cap h2{margin:0;font-weight:400;font-size:clamp(1.6rem,3.2vw,2.4rem);line-height:1.15}
+.cap p{margin:0;color:#c9c6c0}
+.cap small{display:block;margin-top:.5rem;color:var(--gray);font-size:.95rem}
+.key{display:flex;gap:.4rem 1.1rem;flex-wrap:wrap;margin-top:.75rem;font-size:.95rem;color:#c9c6c0}
+.key i{display:inline-block;width:.8em;height:.8em;border-radius:50%;margin-right:.4em}
+#tip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--gray);border-radius:.9rem;padding:.6rem .85rem;font-size:1rem;line-height:1.35;white-space:nowrap;opacity:0;transform:translate(-50%,calc(-100% - 14px));transition:opacity .12s}
+#tip b{display:block;font-weight:400;font-size:1.3rem}
+#tip i{display:inline-block;width:.75em;height:.75em;border-radius:50%;margin-right:.4em}
+#tip em{display:block;color:var(--gray);font-size:.85rem}
+@media (max-width:700px){.cap{grid-template-columns:1fr}.stage{border-radius:1.25rem}}
+</style>
 </head>
 <body>
+<header>
+  <a href="#inicio" aria-label="CHROMA, inicio">
+    <div class="logo small" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b></div>
+  </a>
+</header>
 
-  <h1>El título de mi proyecto</h1>
-  <p>Una frase que explica de qué trata.</p>
+<div class="hero" id="inicio">
+  <div class="logo big" role="img" aria-label="CHROMA">
+    <b>C</b><b>H</b><b>R</b><b>O</b><b>M</b><b>A</b>
+  </div>
+  <div class="intro">
+    <h1>Tu música también tiene color.</h1>
+    <p>CHROMA convierte mis hábitos de escucha de Spotify, de 2018 a 2026, en una identidad visual. El color es el género, cada círculo es un artista y su tamaño, el tiempo que le he dedicado.</p>
+    <a class="btn" href="#composiciones">Empezar <span aria-hidden="true">↓</span></a>
+  </div>
+  <footer><span>by Gina Guiot Martí</span><span>2026–2027</span></footer>
+</div>
 
-  <button id="boton">Ver mi pregunta</button>
-  <p id="texto" hidden>Aquí va mi pregunta de investigación.</p>
+<section class="comp" id="composiciones" aria-labelledby="t1">
+  <div class="stage">
+    <canvas id="c1" role="img" aria-label="Círculos de colores que laten y orbitan despacio. Cada uno es un artista; al pasar el ratón se ve su nombre, género y minutos de escucha."></canvas>
+    <div id="tip" role="status"></div>
+  </div>
+  <div class="cap">
+    <div><h2 id="t1">Un universo de artistas</h2><div class="key" id="key"></div></div>
+    <div><p>Cada círculo es un artista. El color marca su género y el tamaño, el tiempo que lo has escuchado. Pasa el ratón por encima para ver los detalles.</p>
+    <small>Datos de ejemplo: nombres, géneros y minutos son inventados hasta conectar tu exportación de Spotify.</small></div>
+  </div>
+</section>
 
-  <!-- El JavaScript va al final, cuando la página ya está cargada -->
-  <script src="script.js"></script>
+<section class="comp" aria-labelledby="t2">
+  <div class="stage"><canvas id="c2" role="img" aria-label="Anillos concéntricos, uno por año de 2018 a 2026, que se van encendiendo uno tras otro"></canvas></div>
+  <div class="cap">
+    <div><h2 id="t2">Anillos por año</h2></div>
+    <div><p>Cada anillo es un año. Los puntos son artistas y su tamaño depende de las horas escuchadas. La huella se va encendiendo año a año.</p>
+    <small>Propuesta por validar: confirmar el periodo y los datos reales de Spotify.</small></div>
+  </div>
+</section>
+
+<section class="comp" aria-labelledby="t3">
+  <div class="stage"><canvas id="c3" role="img" aria-label="Matriz provisional que representa la actividad de escucha por día y hora, con celdas de color de ejemplo"></canvas></div>
+  <div class="cap">
+    <div><h2 id="t3">Un ritmo semanal</h2></div>
+    <div><p>Propuesta: una matriz que cruza los días de la semana con las horas del día. La intensidad muestra minutos o reproducciones y el color puede distinguir géneros.</p>
+    <small>Visualización provisional con datos de ejemplo. Requiere marcas de fecha y hora en la exportación de Spotify.</small></div>
+  </div>
+</section>
+
+<script>
+const G=["#ff9500","#dfff00","#00f51a","#087df5","#ef00d8","#ff080d"];
+const GN=["Género A","Género B","Género C","Género D","Género E","Género F"];
+const C={bg:"#000",ink:"#f2f0ec",gray:"#707070"};
+const TAU=Math.PI*2;
+const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const sm=x=>x*x*(3-2*x), cl=x=>Math.max(0,Math.min(1,x));
+document.getElementById("key").innerHTML=G.map((c,i)=>`<span><i style="background:${c}"></i>${GN[i]}</span>`).join("");
+
+function setup(id){
+  const cv=document.getElementById(id),ctx=cv.getContext("2d");
+  const o={cv,ctx,w:0,h:0};
+  const fit=()=>{const d=Math.min(devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+    o.w=r.width;o.h=r.height;cv.width=r.width*d;cv.height=r.height*d;ctx.setTransform(d,0,0,d,0,0)};
+  fit();new ResizeObserver(fit).observe(cv);return o;
+}
+
+/* LOOP 1 · universo de artistas (24 s) */
+const L1=setup("c1"),T1=24,R1=rng(7),tip=document.getElementById("tip");
+const arts=Array.from({length:36},()=>({m:Math.pow(R1(),2.2),g:Math.floor(R1()*6),k:1+Math.floor(R1()*3),p:R1()*TAU,ph:R1()*TAU,x:0,y:0,r:0}))
+  .sort((a,b)=>b.m-a.m);
+arts.forEach((a,i)=>{a.name="Artista "+String(i+1).padStart(2,"0");a.min=Math.round(90+a.m*4200)});
+let hover=-1;
+function draw1(t){
+  const {ctx,w,h}=L1;ctx.fillStyle=C.bg;ctx.fillRect(0,0,w,h);
+  const s=Math.min(w,h),cx=w/2,cy=h/2,step=s*0.075;
+  arts.forEach((a,i)=>{
+    const rr=step*Math.sqrt(i+.6)*1.12,ang=i*2.39996;
+    const u=TAU*t/T1*a.k+a.p, dr=s*0.014;
+    a.x=cx+Math.cos(ang)*rr+Math.cos(u)*dr; a.y=cy+Math.sin(ang)*rr*.82+Math.sin(u)*dr;
+    a.r=(s*0.014+s*0.075*Math.sqrt(a.m))*(1+.05*Math.sin(TAU*t/T1*2+a.ph));
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,TAU);ctx.fillStyle=G[a.g];
+    ctx.globalAlpha=(hover<0||hover===i)?.95:.35;ctx.fill();ctx.globalAlpha=1;
+    if(hover===i){ctx.lineWidth=2;ctx.strokeStyle=C.ink;ctx.stroke()}
+  });
+  if(hover>=0){const a=arts[hover];tip.style.left=a.x+"px";tip.style.top=(a.y-a.r)+"px"}
+}
+function pick(e){
+  const r=L1.cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+  let f=-1;arts.forEach((a,i)=>{if(Math.hypot(x-a.x,y-a.y)<=a.r+3)f=i});
+  if(f!==hover){hover=f;
+    if(f<0){tip.style.opacity=0}else{const a=arts[f];
+      tip.innerHTML=`<b>${a.name}</b><i style="background:${G[a.g]}"></i>${GN[a.g]}<br>${a.min.toLocaleString("es-ES")} min de escucha<em>ejemplo</em>`;
+      tip.style.opacity=1}
+    L1.cv.style.cursor=f<0?"default":"pointer";
+    if(still)draw1(6);
+  }
+}
+L1.cv.addEventListener("pointermove",pick);
+L1.cv.addEventListener("pointerdown",pick);
+L1.cv.addEventListener("pointerleave",()=>{hover=-1;tip.style.opacity=0;if(still)draw1(6)});
+
+/* LOOP 2 · una década de escuchas (36 s) */
+const L2=setup("c2"),T2=36,R2=rng(21);
+const years=[2018,2019,2020,2021,2022,2023,2024,2025,2026];
+const hrs=[12,37,52,64,88,120,95,70,45]; // ejemplo
+const rings=years.map((y,i)=>({y,dir:i%2?-1:1,k:1+(i%2),p:R2()*TAU,
+  dots:Array.from({length:10+Math.round(hrs[i]/6)},()=>({a:R2()*TAU,s:.4+R2()*.6,g:Math.floor(R2()*6)}))}));
+function draw2(t){
+  const {ctx,w,h}=L2;ctx.fillStyle=C.bg;ctx.fillRect(0,0,w,h);
+  const s=Math.min(w,h),cx=w/2,cy=h/2,n=rings.length;
+  const ph=(t%T2)/T2, fade=1-sm(cl((ph-.94)/.06)), pos=ph/.94*n;
+  const cur=Math.min(n-1,Math.floor(pos));
+  rings.forEach((g,i)=>{
+    const R=s*(.14+.34*i/(n-1));
+    const lit=sm(cl(pos-i))*fade;
+    ctx.beginPath();ctx.arc(cx,cy,R,0,TAU);ctx.lineWidth=i===cur?1.5:1;
+    ctx.strokeStyle=i===cur&&fade>.5?C.ink:`rgba(112,112,112,${.25+.35*lit})`;ctx.stroke();
+    g.dots.forEach(d=>{
+      const a=d.a+g.p+g.dir*TAU*t/T2*g.k;
+      const r=s*.007+s*.012*d.s*hrs[i]/120;
+      ctx.beginPath();ctx.arc(cx+Math.cos(a)*R,cy+Math.sin(a)*R,r,0,TAU);
+      ctx.fillStyle=lit>.5?G[d.g]:C.gray;ctx.globalAlpha=lit>.5?1:.5;ctx.fill();ctx.globalAlpha=1;
+    });
+  });
+  ctx.fillStyle=C.ink;ctx.textAlign="center";ctx.textBaseline="middle";
+  ctx.font=`${Math.round(s*.065)}px "Instrument Serif",Georgia,serif`;
+  ctx.globalAlpha=.4+.6*fade;ctx.fillText(years[cur],cx,cy);ctx.globalAlpha=1;
+}
+
+/* LOOP 3 · ritmo semanal (propuesta ilustrativa) */
+const L3=setup("c3"),days=["L","M","X","J","V","S","D"];
+function draw3(t){
+  const {ctx,w,h}=L3;ctx.fillStyle=C.bg;ctx.fillRect(0,0,w,h);
+  const left=38,right=16,top=24,bottom=28,gapX=8,gapY=4;
+  const cellW=(w-left-right-gapX*6)/7,cellH=(h-top-bottom-gapY*23)/24;
+  ctx.textAlign="center";ctx.textBaseline="middle";ctx.font='14px "Instrument Serif",Georgia,serif';ctx.fillStyle=C.ink;
+  days.forEach((day,d)=>ctx.fillText(day,left+d*(cellW+gapX)+cellW/2,10));
+  ctx.textAlign="right";ctx.font='10px "Instrument Serif",Georgia,serif';ctx.fillStyle="#aaa";
+  [0,6,12,18].forEach(hour=>ctx.fillText(String(hour).padStart(2,"0")+"h",left-8,top+hour*(cellH+gapY)+cellH/2));
+  for(let hour=0;hour<24;hour++)for(let day=0;day<7;day++){
+    const seed=(day*17+hour*11+day*hour*3)%29;
+    const strength=seed<8?.12:seed<17?.34:seed<24?.62:.95;
+    const color=G[(day+Math.floor(hour/4))%G.length];
+    ctx.globalAlpha=.18+strength*.82;ctx.fillStyle=color;
+    const x=left+day*(cellW+gapX),y=top+hour*(cellH+gapY);
+    ctx.beginPath();ctx.roundRect(x,y,cellW,cellH,Math.min(4,cellH/3));ctx.fill();
+  }
+  ctx.globalAlpha=1;
+}
+
+function frame(ms){const t=ms/1000;draw1(t);draw2(t);draw3(t);requestAnimationFrame(frame)}
+if(still){const go=()=>{draw1(6);draw2(24);draw3(0)};go();addEventListener("resize",go);document.fonts.ready.then(go)}
+else requestAnimationFrame(frame);
+</script>
 </body>
 </html>
+
