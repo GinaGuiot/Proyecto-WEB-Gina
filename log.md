@@ -69,3 +69,20 @@ Dejar actualizadas en GitHub las fichas de contexto e instrucciones con las deci
 - Confirmar que los datos exportados cubren 2018–2026 y qué variables incluyen.
 - Elegir o ajustar las composiciones 2 y 3 a partir de los datos disponibles.
 - Publicar la web final en la raíz configurada para GitHub Pages y comprobar la URL.
+
+
+## Sesión — 2026-11-24 (publicación de la web CHROMA)
+
+### Objetivo
+Sustituir la página inicial del repositorio por la web CHROMA y mantener actualizada su documentación.
+
+### Cambios realizados
+- Publicado el contenido de CHROMA.html como index.html en la raíz de main.
+- Añadida una tercera ficha visual provisional, «Un ritmo semanal», para completar el recorrido de tres composiciones.
+- Conservadas como propuestas por validar las vistas «Anillos por año» y «Ritmo semanal».
+- Actualizados CONTEXT.md, INSTRUCTIONS.md y README.md para describir la web publicada y su estado real.
+
+### Verificación
+- El flujo «pages build and deployment» terminó con éxito para el commit de publicación.
+- URL de GitHub Pages: https://ginaguiot.github.io/Proyecto-WEB-Gina/
+- Las visualizaciones todavía usan datos de ejemplo; su validación depende de la exportación real de Spotify.
