@@ -1,79 +1,71 @@
-<!--
-INSTRUCTIONS.md · ¿Qué hacer y qué no hacer?
-El criterio de aceptación: las condiciones que tiene que cumplir el resultado
-para darlo por bueno. Se escribe ANTES de pedir, no después de ver el resultado.
-Regla: si no se puede comprobar mirando el resultado, no es criterio. Es un deseo.
-La mitad sale de tu CONTEXT.md (tono, decisiones, lo que falta, hipótesis).
-Copia el bloque una vez por petición. Se va ajustando.
--->
-
 # INSTRUCTIONS · CHROMA
 
-## [17/11] · Definición de la identidad visual del proyecto
+## Identidad visual y estructura por scroll
 
-QUIERO: Definir un lenguaje visual propio para CHROMA que relacione la música, los géneros musicales y los colores mediante composiciones gráficas.
-
-SERÁ BUENO SI:
-- Existe una relación coherente entre los colores elegidos y los géneros musicales.
-- El lenguaje visual tiene una identidad reconocible y consistente.
-- Las composiciones combinan valor estético, creatividad y claridad visual.
-
-NO SIRVE SI:
-- La estética es genérica y no transmite personalidad.
-
-- Los colores y las formas se utilizan únicamente como decoración, sin relación con los datos.
-
-- El resultado parece un dashboard estadístico convencional.
-
-LO SABRÉ PORQUE: Las diferentes composiciones comparten una misma identidad visual y cada elemento gráfico tiene una función y un significado.
-
-## [06/11] ·Primera composición: universo de artistas
-
-QUIERO: Crear una composición gráfica basada en circunferencias que representen mis artistas y mis hábitos de escucha.
+QUIERO: Una web de CHROMA con una identidad visual reconocible, dos zonas de scroll y tres composiciones gráficas relacionadas con los datos reales de Spotify.
 
 SERÁ BUENO SI:
-- Cada circunferencia representa un artista de mis datos de Spotify.
-- El color de cada circunferencia identifica el género musical correspondiente.
-- El tamaño de cada circunferencia es proporcional al tiempo de escucha del artista.
-- La composición permite identificar visualmente qué artistas tienen mayor presencia en mis hábitos musicales.
+- La tipografía de toda la web es Instrument Serif.
+- El fondo es grafito, el texto legible y los acentos de color vivos y coherentes.
+- El logo pequeño, formado solo por las seis barras de color, aparece arriba a la izquierda.
+- El logo grande con las letras CHROMA aparece en la portada. Las letras están estáticas y las barras descansan sobre una línea base fija; solo cambia su altura desde arriba, con un movimiento sutil.
+- La primera zona de scroll contiene el logo grande, una introducción breve y un botón «Empezar».
+- «Empezar» desplaza a la segunda zona, donde las composiciones se presentan en fichas verticales con título y explicación.
+- Las tres composiciones se entienden como partes de una misma experiencia, no como gráficos independientes.
+- La web funciona con teclado y móvil. La información que aparece al pasar el cursor también se puede consultar tocando o enfocando el elemento.
 
 NO SIRVE SI:
-- Los tamaños son aleatorios o no corresponden a los datos reales.
-- Los colores no mantienen una relación coherente con los géneros musicales.
-- La acumulación de elementos hace que la composición sea difícil de interpretar.
+- Se mueven las letras o la base del logo durante la animación.
+- El movimiento desplaza las barras completas en vez de alargar y acortar su parte superior.
+- La página parece un dashboard genérico o utiliza los colores como adorno sin significado.
 
-LO SABRÉ PORQUE: Al comparar los datos de Spotify con la composición, podré comprobar que cada artista, color y tamaño se corresponden con la información original.
+LO SABRÉ PORQUE: Al entrar se ve la identidad de CHROMA; al pulsar «Empezar» se llega a las visualizaciones y cada elemento tiene una función comprensible.
 
-## [17/11] · Exploración de composiciones gráficas adicionales
+## 1. Universo de artistas — requisito confirmado
 
-QUIERO: Desarrollar al menos dos composiciones gráficas diferentes que representen otras dimensiones de mis gustos musicales.
+QUIERO: Una composición de círculos para explorar los artistas y los hábitos de escucha.
 
 SERÁ BUENO SI:
-- Cada composición representa una relación o variable diferente de los datos musicales.
-- Las propuestas tienen una estructura visual distinta a la composición de circunferencias.
-- Cada composición aporta información o una interpretación nueva sobre mis hábitos musicales.
-- Todas mantienen la identidad visual de CROMAS.
+- Cada círculo representa un artista de la exportación real de Spotify.
+- El color identifica el género musical y el tamaño se calcula a partir de los minutos escuchados.
+- Al pasar el cursor por cada círculo se muestran el nombre del artista, el género y los minutos de escucha.
+- La misma información es accesible con foco de teclado y toque en pantallas táctiles.
+- Los círculos se pueden explorar sin que las etiquetas o la acumulación hagan ilegible la composición.
+- Los datos provisionales se identifican claramente como ejemplos.
 
 NO SIRVE SI:
-- Las nuevas propuestas son simples variaciones de la primera composición.
-- Se repiten los mismos datos y la misma lectura visual sin aportar nada nuevo.
-- Las composiciones no tienen una relación demostrable con los datos de Spotify.
+- Los artistas, géneros o minutos inventados se presentan como datos reales.
+- El tamaño no corresponde al tiempo de escucha o el color no tiene una leyenda comprensible.
 
-LO SABRÉ PORQUE: Podré explicar qué información representa cada composición y qué aporta respecto a las demás.
+## 2. Anillos de escucha por año — propuesta pendiente
 
-## [17/11] ·  Diseño y desarrollo de la página web
+Propuesta: representar cada año mediante un anillo concéntrico; ubicar artistas como puntos, usando tamaño para el tiempo de escucha y color para el género. La composición mostraría cambios entre años.
 
-QUIERO: Diseñar una página web que reúna las diferentes composiciones gráficas y presente CHROMA como una exploración visual de mi identidad musical.
+Antes de aprobarla:
+- Confirmar que la exportación permite calcular el tiempo por artista y año.
+- Confirmar el periodo temporal. El intervalo 2018–2026 aparece en la maqueta, pero todavía debe verificarse con los datos.
+- Explicar visualmente el significado de los anillos y sus escalas.
 
-SERÁ BUENO SI:
-- Las composiciones se integran en una misma experiencia visual.
-- La web mantiene coherencia cromática, tipográfica y gráfica.
-- Las visualizaciones son comprensibles y tienen una relación clara con los datos.
-- La página permite explorar las diferentes interpretaciones de mis gustos musicales.
+## 3. Ritmo semanal — propuesta pendiente
 
-NO SIRVE SI:
-- La web parece una colección de gráficos independientes sin conexión entre ellos.
-- La navegación dificulta la comprensión del proyecto.
-- El diseño tiene más protagonismo que la información que pretende comunicar.
+Propuesta: una matriz con los días de la semana en un eje y las horas del día en el otro. La intensidad de cada celda mostraría minutos o número de reproducciones; el género podría distinguirse mediante color o filtros.
 
-LO SABRÉ PORQUE: Al recorrer la web, podré entender el concepto de CHROMA, interpretar las composiciones y reconocer una identidad visual común.
+Antes de aprobarla:
+- Confirmar que la exportación contiene fecha y hora de reproducción.
+- Elegir una escala que no oculte los momentos con menos actividad.
+- Asegurar que esta lectura temporal aporta información distinta al universo de artistas y a los anillos por año.
+
+Las composiciones 2 y 3 son propuestas para valorar, no decisiones cerradas. Si los campos disponibles no permiten construirlas con rigor, presentar alternativas basadas en datos que sí existan.
+
+## Datos y transparencia
+
+- No inventar artistas, géneros, reproducciones, minutos ni patrones.
+- No mostrar como hallazgos las hipótesis antes de comprobarlas con los datos.
+- Mantener las etiquetas de «datos de ejemplo» mientras la web use contenido provisional.
+- Definir la clasificación de géneros y su paleta después de revisar la exportación.
+
+## Publicación
+
+- Repositorio: https://github.com/GinaGuiot/Proyecto-WEB-Gina
+- URL prevista de GitHub Pages: https://ginaguiot.github.io/Proyecto-WEB-Gina/
+- La rama main aún contiene la página inicial de plantilla. La URL solo se dará por verificada cuando el index.html final y sus recursos estén publicados y se compruebe que cargan desde GitHub Pages.
