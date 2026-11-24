@@ -2,7 +2,7 @@
 
 ## Identidad visual y estructura por scroll
 
-QUIERO: Una web de CHROMA con una identidad visual reconocible, dos zonas de scroll y tres composiciones gráficas relacionadas con los datos reales de Spotify.
+QUIERO: Una web de CHROMA con una identidad visual reconocible, dos zonas de scroll y tres composiciones gráficas relacionadas con los datos de Spotify.
 
 SERÁ BUENO SI:
 - La tipografía de toda la web es Instrument Serif.
@@ -37,18 +37,18 @@ NO SIRVE SI:
 - Los artistas, géneros o minutos inventados se presentan como datos reales.
 - El tamaño no corresponde al tiempo de escucha o el color no tiene una leyenda comprensible.
 
-## 2. Anillos de escucha por año — propuesta pendiente
+## 2. Anillos por año — propuesta pendiente de validación
 
-Propuesta: representar cada año mediante un anillo concéntrico; ubicar artistas como puntos, usando tamaño para el tiempo de escucha y color para el género. La composición mostraría cambios entre años.
+La web muestra una propuesta de anillos concéntricos, uno por año; los puntos representan artistas, con tamaño por tiempo de escucha y color por género.
 
 Antes de aprobarla:
 - Confirmar que la exportación permite calcular el tiempo por artista y año.
-- Confirmar el periodo temporal. El intervalo 2018–2026 aparece en la maqueta, pero todavía debe verificarse con los datos.
+- Confirmar el periodo temporal que muestran los anillos.
 - Explicar visualmente el significado de los anillos y sus escalas.
 
-## 3. Ritmo semanal — propuesta pendiente
+## 3. Ritmo semanal — propuesta pendiente de validación
 
-Propuesta: una matriz con los días de la semana en un eje y las horas del día en el otro. La intensidad de cada celda mostraría minutos o número de reproducciones; el género podría distinguirse mediante color o filtros.
+La web muestra una matriz de ejemplo que cruza los días de la semana con las horas del día. La intensidad puede representar minutos o reproducciones y el color puede distinguir géneros.
 
 Antes de aprobarla:
 - Confirmar que la exportación contiene fecha y hora de reproducción.
@@ -58,14 +58,12 @@ Antes de aprobarla:
 Las composiciones 2 y 3 son propuestas para valorar, no decisiones cerradas. Si los campos disponibles no permiten construirlas con rigor, presentar alternativas basadas en datos que sí existan.
 
 ## Datos y transparencia
-
 - No inventar artistas, géneros, reproducciones, minutos ni patrones.
 - No mostrar como hallazgos las hipótesis antes de comprobarlas con los datos.
 - Mantener las etiquetas de «datos de ejemplo» mientras la web use contenido provisional.
 - Definir la clasificación de géneros y su paleta después de revisar la exportación.
 
 ## Publicación
-
 - Repositorio: https://github.com/GinaGuiot/Proyecto-WEB-Gina
-- URL prevista de GitHub Pages: https://ginaguiot.github.io/Proyecto-WEB-Gina/
-- La rama main aún contiene la página inicial de plantilla. La URL solo se dará por verificada cuando el index.html final y sus recursos estén publicados y se compruebe que cargan desde GitHub Pages.
+- Web publicada: https://ginaguiot.github.io/Proyecto-WEB-Gina/
+- El despliegue de GitHub Pages desde la rama main terminó correctamente el 24/11/2026.
