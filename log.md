@@ -119,3 +119,13 @@ Sustituir la página inicial del repositorio por la web CHROMA y mantener actual
 
 ### Verificación
 - El flujo de publicación de GitHub Pages se comprobará tras los cambios.
+
+
+## Sesión — 2026-11-25 (reparación de las composiciones)
+
+### Incidencia y corrección
+- Al reorganizar el segundo loop se había eliminado el contenedor de la leyenda de géneros, que seguía siendo necesario para inicializar el JavaScript.
+- Restaurado el elemento de leyenda dentro de la explicación de la composición para que no se interrumpan el dibujo de los canvas ni la actualización por scroll.
+
+### Verificación
+- Publicación de GitHub Pages pendiente de finalizar.
