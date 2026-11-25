@@ -16,8 +16,15 @@ Propuesta visual: una matriz que cruza los días de la semana con las horas del 
 
 **Estado:** la web contiene una versión de muestra generada con valores ilustrativos. Solo se podrá validar si la exportación incluye marcas de fecha y hora suficientes.
 
+## Comportamiento del scroll
+- La primera vista presenta las tres composiciones juntas antes del despliegue individual.
+- Al avanzar por el scroll, cada composición se expande progresivamente a pantalla completa y se conecta con la siguiente.
+- La barra superior permanece fija y conserva el logo pequeño.
+- Las explicaciones se presentan como texto independiente del lienzo visual, sin encerrar la composición en un rectángulo.
+- La transición respeta la preferencia del sistema por reducir el movimiento.
+
 ## Criterios de aceptación
-- Se muestran tres fichas distintas en orden vertical.
+- Se muestran tres composiciones distintas, primero juntas y luego una a una.
 - Cada ficha explica qué variable representan las formas, tamaños y colores.
 - Las propuestas 2 y 3 se identifican como provisionales hasta validarlas con los datos.
 - La primera composición permite consultar artista, género y minutos.
