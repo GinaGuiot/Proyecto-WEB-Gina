@@ -299,11 +299,12 @@ const mix=(a,b,t)=>a+(b-a)*t;
 function clamp01(v){return Math.max(0,Math.min(1,v))}
 function smooth(t){return t*t*(3-2*t)}
 function overviewLayout(index,w,h,mobile){
-  return mobile?{x:0,y:(index-1)*h*.265,s:.235,o:.96}:{x:(index-1)*w*.315,y:0,s:.28,o:.96};
+  const scale=mobile?.27:.29;
+  return{x:(index-1)*w*.315,y:0,s:scale,o:.96};
 }
 function stateLayout(state,index,w,h){
   if(index===state)return{x:0,y:0,s:1,o:1};
-  return{x:index<state?-w*.39:w*.39,y:0,s:.19,o:.46};
+  return{x:index<state?-w*.39:w*.39,y:0,s:.19,o:0};
 }
 function curveBetween(a,b){
   const bend=Math.max(42,Math.abs(b.x-a.x)*.22);
@@ -349,16 +350,26 @@ function updateStory(){
       const from=overviewLayout(index,w,h,mobile),to=stateLayout(0,index,w,h);
       const t=still?(expand<.5?0:1):smooth(expand);
       layout={x:mix(from.x,to.x,t),y:mix(from.y,to.y,t),s:mix(from.s,to.s,t),o:mix(from.o,to.o,t)};
+      const fadeOut=smooth(clamp01((expand-.04)/.38));
+      if(index===0)layout.o=smooth(clamp01((expand-.48)/.48));
+      else layout.o=1-fadeOut;
     }else{
       const state=Math.min(1,Math.floor(route)),fraction=route-state;
       const toState=Math.min(2,state+1);
       const t=still?(fraction<.5?0:1):smooth(fraction);
       const from=stateLayout(state,index,w,h),to=stateLayout(toState,index,w,h);
       layout={x:mix(from.x,to.x,t),y:mix(from.y,to.y,t),s:mix(from.s,to.s,t),o:mix(from.o,to.o,t)};
+      const active=Math.min(1,Math.floor(route)),fraction=route-active,next=active+1;
+      if(fraction>0){
+        if(index===active)layout.o=1-smooth(clamp01((fraction-.12)/.38));
+        else if(index===next)layout.o=smooth(clamp01((fraction-.55)/.38));
+        else layout.o=0;
+      }else layout.o=index===active?1:0;
     }
     layoutNow.push(layout);
     panel.style.transform="translate3d("+layout.x+"px,"+layout.y+"px,0) scale("+layout.s+")";
     panel.style.opacity=String(layout.o);
+    panel.setAttribute("aria-hidden",String(layout.o<.02));
     panel.style.zIndex=String(Math.round(layout.s*10)+1);
     const interactive=progress>introEnd&&layout.s>.96;
     panel.classList.toggle("is-current",interactive);
