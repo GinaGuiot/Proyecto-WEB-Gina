@@ -359,10 +359,10 @@ function updateStory(){
       const t=still?(fraction<.5?0:1):smooth(fraction);
       const from=stateLayout(state,index,w,h),to=stateLayout(toState,index,w,h);
       layout={x:mix(from.x,to.x,t),y:mix(from.y,to.y,t),s:mix(from.s,to.s,t),o:mix(from.o,to.o,t)};
-      const active=Math.min(1,Math.floor(route)),fraction=route-active,next=active+1;
-      if(fraction>0){
-        if(index===active)layout.o=1-smooth(clamp01((fraction-.12)/.38));
-        else if(index===next)layout.o=smooth(clamp01((fraction-.55)/.38));
+      const active=Math.min(1,Math.floor(route)),stepFraction=route-active,next=active+1;
+      if(stepFraction>0){
+        if(index===active)layout.o=1-smooth(clamp01((stepFraction-.12)/.38));
+        else if(index===next)layout.o=smooth(clamp01((stepFraction-.55)/.38));
         else layout.o=0;
       }else layout.o=index===active?1:0;
     }
