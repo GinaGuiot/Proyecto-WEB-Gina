@@ -1,33 +1,43 @@
-# Ficha de scroll 2 · Composiciones visuales
+# Ficha de scroll 2 · Universo musical y composiciones
 
 ## Propósito
-Reunir en una misma zona de scroll las tres lecturas visuales de CHROMA. Cada composición aparece en una ficha vertical con título y explicación.
+Presentar tres lecturas gráficas de CHROMA en una experiencia inmersiva que se explora con el scroll.
+
+## Entrada al loop
+- El botón «Ver mi universo musical» de la portada lleva a esta sección.
+- La cabecera permanece fija con el logo pequeño arriba a la izquierda.
+- La primera vista reúne las tres composiciones en una fila horizontal.
+- A medida que se avanza con el scroll, cada composición se despliega una a una a pantalla completa.
+- Las transiciones conectan visualmente una composición con la siguiente.
+- Cuando una composición está activa, las otras dos quedan ocultas; no se ven detrás ni se superponen.
+- La visualización ocupa el lienzo completo sin marco rectangular. El texto explicativo aparece separado del lienzo.
+- En móvil, el resumen inicial también se mantiene horizontal y el contenido se ajusta al tamaño de pantalla.
 
 ## Composición 1 · Universo de artistas
-Cada círculo representa un artista. El tamaño corresponde al tiempo de escucha y el color al género musical. Al pasar el cursor se muestran artista, género y minutos escuchados; en móvil, la información debe poder consultarse al tocar el círculo.
+Cada círculo representa un artista. El tamaño corresponde a los minutos de escucha y el color al género musical. Al pasar el cursor por un círculo se muestran el nombre del artista, el género y los minutos escuchados. En pantallas táctiles, la información se consulta tocando el círculo.
+
+**Estado:** la interacción y la composición están implementadas en la web, pero los artistas, géneros y minutos actuales son datos de ejemplo, no una exportación real.
 
 ## Composición 2 · Anillos por año
-Propuesta visual: un anillo concéntrico por año. Los puntos representan artistas; su tamaño indica las horas escuchadas y el color, el género. Permite comparar la actividad entre años.
+Propuesta de anillos concéntricos para observar cambios en las escuchas a lo largo del tiempo.
 
-**Estado:** la web contiene una versión exploratoria con datos de ejemplo para 2018–2026. Confirmar el periodo y las variables con la exportación real antes de aprobarla.
+**Estado:** la versión publicada es exploratoria y utiliza datos ilustrativos. Confirmar el periodo, las variables y la escala con la exportación antes de considerarla definitiva.
 
 ## Composición 3 · Ritmo semanal
-Propuesta visual: una matriz que cruza los días de la semana con las horas del día. La intensidad puede representar minutos o reproducciones y el color puede distinguir géneros.
+Propuesta de matriz que cruza días de la semana y horas del día para explorar momentos de escucha.
 
-**Estado:** la web contiene una versión de muestra generada con valores ilustrativos. Solo se podrá validar si la exportación incluye marcas de fecha y hora suficientes.
-
-## Comportamiento del scroll
-- La primera vista presenta las tres composiciones juntas en una fila horizontal, también en móvil.
-- Al avanzar por el scroll, cada composición se expande progresivamente a pantalla completa y se conecta con la siguiente.
-- Cuando una composición está activa, las otras dos no quedan visibles detrás ni superpuestas.
-- La barra superior permanece fija y conserva el logo pequeño.
-- Las explicaciones se presentan como texto independiente del lienzo visual, sin encerrar la composición en un rectángulo.
-- La transición respeta la preferencia del sistema por reducir el movimiento.
+**Estado:** la versión publicada es una muestra generada con valores ilustrativos. Validarla solo si la exportación incluye marcas de fecha y hora suficientes.
 
 ## Criterios de aceptación
-- Se muestran tres composiciones distintas, primero juntas y luego una a una.
-- Cada ficha explica qué variable representan las formas, tamaños y colores.
-- Las propuestas 2 y 3 se identifican como provisionales hasta validarlas con los datos.
-- La primera composición permite consultar artista, género y minutos.
-- Los datos ficticios nunca se presentan como hallazgos de la escucha personal.
-- El contenido se adapta a móvil y mantiene los textos legibles.
+- La primera vista presenta las tres composiciones en horizontal.
+- El scroll despliega las composiciones una a una y ofrece una transición conectada.
+- Solo se ve la composición activa durante cada vista individual.
+- El lienzo no aparece encerrado en un rectángulo.
+- La cabecera conserva el logo pequeño durante todo el loop.
+- La primera composición permite consultar artista, género y minutos mediante cursor o toque.
+- Las propuestas 2 y 3 y todos los datos provisionales se identifican como ejemplos hasta validarse.
+- La experiencia se adapta a móvil y respeta el movimiento reducido.
+
+## Enlaces
+- Web publicada: https://ginaguiot.github.io/Proyecto-WEB-Gina/
+- Repositorio: https://github.com/GinaGuiot/Proyecto-WEB-Gina
