@@ -73,6 +73,44 @@ canvas{display:block;width:100%;height:100%}
 #tip i{display:inline-block;width:.75em;height:.75em;border-radius:50%;margin-right:.4em}
 #tip em{display:block;color:var(--gray);font-size:.85rem}
 @media (max-width:700px){.cap{grid-template-columns:1fr}.stage{border-radius:1.25rem}}
+
+
+:root{--header-h:64px}
+html{scroll-padding-top:var(--header-h)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50}
+.visual-story{position:relative;height:440svh;padding:0;scroll-margin-top:var(--header-h)}
+.story-pin{position:sticky;top:var(--header-h);height:calc(100svh - var(--header-h));overflow:hidden;isolation:isolate;background:var(--bg)}
+.connections{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;pointer-events:none}
+.connections path{fill:none;stroke:rgba(242,240,236,.48);stroke-width:1.2;stroke-dasharray:5 10;vector-effect:non-scaling-stroke}
+.connections circle{fill:var(--c2);filter:drop-shadow(0 0 7px var(--c2))}
+.visual-panel{position:absolute;inset:0;transform-origin:50% 50%;will-change:transform,opacity;pointer-events:none}
+.visual-panel canvas{width:100%;height:100%;pointer-events:none}
+.visual-panel.is-current canvas{pointer-events:auto;touch-action:pan-y}
+.overview-intro{position:absolute;top:clamp(1.3rem,5vh,3.5rem);left:clamp(1.2rem,5vw,5rem);z-index:20;max-width:34rem;pointer-events:none;transition:opacity .12s}
+.story-kicker{margin:0 0 .45rem;color:var(--c2);font-size:.85rem;letter-spacing:.13em;text-transform:uppercase}
+.overview-intro h2{margin:0;font-weight:400;font-style:italic;font-size:clamp(2rem,5vw,4.5rem);line-height:.98;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.overview-titles{position:absolute;left:5vw;right:5vw;bottom:3vh;z-index:20;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:center;pointer-events:none;transition:opacity .12s}
+.overview-titles span{font-size:clamp(.8rem,1.25vw,1.05rem);text-shadow:0 1px 10px rgba(0,0,0,.8)}
+.story-copy{position:absolute;left:clamp(1.2rem,5vw,5rem);bottom:clamp(4.6rem,9vh,7rem);z-index:20;max-width:min(32rem,88vw);pointer-events:none;opacity:0;text-shadow:0 2px 16px rgba(0,0,0,.75)}
+.story-copy h2{margin:.15rem 0 .55rem;font-weight:400;font-style:italic;font-size:clamp(2rem,5vw,4.5rem);line-height:1}
+.story-copy p:not(.story-kicker){margin:0;max-width:31rem;color:#f2f0ec;font-size:clamp(1rem,1.5vw,1.3rem)}
+.story-copy small{display:block;margin-top:.55rem;color:#c9c6c0;font-size:.9rem}
+.scroll-hint{position:absolute;right:clamp(1.2rem,5vw,5rem);bottom:clamp(1.2rem,3vh,2.5rem);z-index:21;display:flex;align-items:center;gap:.8rem;color:#c9c6c0;font-size:.78rem;letter-spacing:.13em;transition:opacity .12s}
+.scroll-hint i{font-size:1.4rem;font-style:normal;color:var(--c2)}
+#tip{z-index:4}
+@media(max-width:700px){
+  :root{--header-h:64px}
+  .visual-story{height:460svh}
+  .overview-intro{top:1.5rem;right:1.2rem}
+  .overview-intro h2{font-size:clamp(2rem,10vw,3.2rem)}
+  .overview-titles{left:.5rem;right:.5rem;bottom:1.4rem;gap:.25rem}
+  .overview-titles span{font-size:.72rem}
+  .story-copy{left:1.2rem;right:1.2rem;bottom:4.4rem;max-width:none}
+  .story-copy h2{font-size:2.5rem}
+  .story-copy p:not(.story-kicker){font-size:1rem}
+  .story-copy small{font-size:.78rem}
+  .scroll-hint{right:1.2rem;bottom:1rem;font-size:.68rem}
+}
 </style>
 </head>
 <body>
