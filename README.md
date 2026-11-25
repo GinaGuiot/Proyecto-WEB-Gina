@@ -3,7 +3,7 @@
 CHROMA convierte hábitos personales de escucha musical en una identidad visual mediante color, formas y datos de Spotify.
 
 ## Experiencia web
-La web se organiza en dos zonas de scroll: una portada con el logo principal, una introducción y el botón «Ver mi universo musical»; y una zona inmersiva de visualizaciones. En esta segunda zona aparecen primero las tres juntas y, al avanzar, se despliega cada composición a pantalla completa con transiciones conectadas.
+La web se organiza en dos zonas de scroll: una portada con el logo principal, una introducción y el botón «Ver mi universo musical»; y una zona inmersiva de visualizaciones. En esta segunda zona aparecen primero las tres en una fila horizontal y, al avanzar, se despliega cada composición a pantalla completa con transiciones conectadas. Las composiciones inactivas permanecen ocultas mientras otra está activa.
 
 1. **Universo de artistas:** cada círculo representa un artista. El tamaño corresponde a los minutos escuchados, el color al género, y al explorar el círculo se muestra artista, género y minutos.
 2. **Anillos por año:** propuesta visual con datos de ejemplo; pendiente de validar con la exportación.
