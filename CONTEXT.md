@@ -1,5 +1,5 @@
 # CONTEXT · CHROMA
-Última actualización: 24/11/2026
+Última actualización: 25/11/2026
 
 ## La pregunta
 ¿Cómo pueden transformarse los hábitos de escucha musical de una persona en una identidad visual mediante el color, las formas y la visualización de datos?
@@ -8,56 +8,51 @@
 CHROMA convierte los datos personales de escucha de Spotify en una identidad visual. El color identifica géneros musicales y las formas representan artistas, tiempo y patrones de escucha.
 
 ## Los datos
-- Fuente principal: exportación personal de Spotify.
-- Variables de interés: artista, género musical, fecha y hora de escucha, y minutos escuchados cuando estén disponibles.
-- El periodo 2018–2026 aparece en la web publicada; hay que confirmarlo con la exportación real.
-- No inventar artistas, géneros, minutos, recuentos ni tendencias. Las visualizaciones actuales usan datos ilustrativos y los señalan como ejemplos.
+- Fuente prevista: exportación personal de Spotify.
+- Variables de interés: artista, género musical, fecha y hora de escucha y minutos escuchados, cuando estén disponibles.
+- La web presenta el periodo 2018–2026; confirmar que la exportación real cubre ese intervalo.
+- Las visualizaciones actuales usan datos ilustrativos. No presentarlos como resultados de la escucha personal.
 
-## Identidad visual y web
+## Identidad visual
 - Tipografía: Instrument Serif.
-- Fondo grafito, texto claro y acentos cromáticos vivos. El logo usa barras naranja, amarillo lima, verde, azul, magenta y rojo.
-- Hay dos versiones del logo: el símbolo pequeño de barras sin letras va arriba a la izquierda; el logo principal CHROMA, con letras, aparece grande en la portada.
-- En el logo grande, las letras permanecen quietas y alineadas en una base recta. Solo se alargan y acortan ligeramente las barras por su parte superior; la base no se mueve.
-- El recorrido tiene dos zonas de scroll: una portada de bienvenida y una zona de visualizaciones.
-- La portada presenta el logo grande, una breve introducción y el botón «Empezar», que lleva a las composiciones.
-- La zona de visualizaciones contiene tres composiciones en fichas verticales, cada una con título y explicación.
+- Fondo grafito, texto claro y acentos cromáticos naranja, amarillo lima, verde, azul, magenta y rojo.
+- El logo pequeño, compuesto por las seis barras sin letras, permanece arriba a la izquierda en la cabecera fija.
+- El logo grande CHROMA aparece en la portada. Las letras permanecen estáticas y alineadas sobre una base recta; solo cambia suavemente la altura de las barras desde su parte superior.
+
+## Estructura de la experiencia
+La web tiene dos loops de scroll:
+
+1. **Portada y presentación:** logo grande, introducción general de CHROMA y botón «Ver mi universo musical». El texto de bienvenida introduce el proyecto sin describir una visualización concreta.
+2. **Composiciones:** primero se ven las tres propuestas juntas en una fila horizontal. Con el scroll, cada una se despliega progresivamente a pantalla completa y conecta con la siguiente. La composición activa se muestra sola; las otras no quedan visibles detrás. La barra superior conserva el logo pequeño durante el recorrido.
+
+La página respeta la preferencia del sistema por reducir el movimiento y se adapta a pantallas pequeñas.
 
 ## Composiciones
-### 1. Universo de artistas — implementada
-Cada círculo representa un artista. El color representa su género musical y el tamaño depende del tiempo de escucha. Al pasar el cursor por un círculo se muestran el nombre del artista, el género y los minutos escuchados. En móvil, la información debe poder consultarse al tocar el círculo.
+### 1. Universo de artistas
+Cada círculo representa un artista. El tamaño depende de los minutos de escucha y el color representa el género musical. Al pasar el cursor por un círculo se muestran artista, género y minutos; en dispositivos táctiles se puede consultar tocándolo.
 
-### 2. Anillos por año — propuesta visual implementada con datos de ejemplo
-Una composición de anillos concéntricos, uno por año. Los puntos representan artistas; su tamaño indica el tiempo de escucha y el color, el género. Permite observar cómo cambia la escucha entre años. Confirmar el periodo y los campos con la exportación real antes de considerarla definitiva.
+### 2. Anillos por año — propuesta provisional
+Anillos concéntricos para explorar cambios en las escuchas a lo largo del tiempo. La versión actual es exploratoria y emplea datos de ejemplo. Confirmar periodo, variables y escala con la exportación antes de tratarla como definitiva.
 
-### 3. Ritmo semanal — propuesta visual implementada con datos de ejemplo
-Una matriz de días de la semana y horas del día. La intensidad representa minutos o reproducciones y el color distingue categorías musicales. Aporta una lectura del momento en que se escucha música. Solo se podrá convertir en composición final si la exportación incluye marcas de fecha y hora suficientes.
+### 3. Ritmo semanal — propuesta provisional
+Matriz que cruza días de la semana y horas del día. La versión actual emplea valores ilustrativos. Solo se podrá validar si la exportación incluye marcas de fecha y hora suficientes.
 
-Las composiciones 2 y 3 siguen siendo propuestas conceptuales pendientes de validación con datos reales y confirmación de la responsable. La paleta de géneros también queda pendiente de definir a partir de los datos.
-
-## Referentes y criterio
-Interesan la visualización de datos con personalidad, el arte generativo y una identidad cromática comprensible. Se descartan los dashboards estadísticos convencionales y el uso de color o forma como decoración sin relación con los datos.
+Las propuestas 2 y 3 siguen pendientes de validación. La paleta de géneros también debe confirmarse con los datos reales.
 
 ## Decisiones
 - El proyecto se llama CHROMA.
-- Spotify es la fuente principal de datos.
-- El género se relaciona con el color y el tiempo de escucha puede determinar el tamaño de cada círculo.
-- La web reúne tres composiciones distintas y coherentes.
-- Instrument Serif y las dos versiones del logo quedan como decisiones de identidad visual.
-
-## Hipótesis (sin comprobar)
-- Los hábitos musicales pueden representarse mediante una identidad cromática propia.
-- La relación entre artistas y géneros puede revelar agrupaciones o patrones.
-- Las composiciones pueden ofrecer distintas lecturas de una misma escucha.
+- Spotify es la fuente de datos prevista.
+- El recorrido tiene dos loops: portada y composiciones.
+- La web contiene tres composiciones gráficas; primero aparecen juntas en horizontal y después se exploran una a una con scroll.
+- Instrument Serif y las dos versiones del logo forman parte de la identidad visual.
 
 ## Web y repositorio
-- Repositorio: https://github.com/GinaGuiot/Proyecto-WEB-Gina
 - Web publicada: https://ginaguiot.github.io/Proyecto-WEB-Gina/
-- GitHub Actions completó correctamente la compilación y el despliegue de la web el 24/11/2026.
-- La URL corresponde a la versión de CHROMA publicada desde index.html en main.
+- Repositorio: https://github.com/GinaGuiot/Proyecto-WEB-Gina
+- La web se publica con GitHub Pages desde la rama main.
 
 ## Estado y próximos pasos
-- Publicadas la portada con botón «Empezar» y las tres fichas de composición.
-- Las cifras, artistas, géneros y patrones siguen siendo ejemplos; no representan todavía una exportación real.
-- Confirmar periodo y campos de la exportación de Spotify.
-- Validar las propuestas 2 y 3 y definir la paleta de géneros con datos reales.
-- Sustituir los datos de muestra cuando esté disponible la exportación.
+- Portada, navegación por scroll y tres visualizaciones exploratorias publicadas.
+- Los nombres, géneros, minutos y patrones siguen siendo ejemplos hasta integrar y validar la exportación real.
+- Confirmar el periodo y los campos de la exportación de Spotify.
+- Validar las propuestas 2 y 3, y definir la paleta de géneros a partir de los datos disponibles.
