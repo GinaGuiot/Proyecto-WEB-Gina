@@ -138,3 +138,20 @@ Sustituir la página inicial del repositorio por la web CHROMA y mantener actual
 - Ocultadas las composiciones inactivas cuando una se despliega a pantalla completa.
 - Añadida una transición por desvanecimiento para que no se superpongan dos gráficos; la línea de conexión conserva la continuidad del recorrido.
 - Actualizadas la ficha del loop 2 y la descripción del README.
+
+
+## Sesión — 2026-11-25 (documentación consolidada)
+
+### Cambios realizados
+- Actualizado README.md con el enlace de la web publicada, el repositorio, el recorrido de dos loops y el estado provisional de las tres visualizaciones.
+- Corregido CONTEXT.md e INSTRUCTIONS.md para reflejar el CTA «Ver mi universo musical», la fila horizontal inicial, el despliegue individual a pantalla completa y la ocultación de composiciones inactivas.
+- Actualizadas FICHA-LOOP-1-PORTADA.md y FICHA-LOOP-2-COMPOSICIONES.md con los requisitos y enlaces actuales.
+- La ficha del segundo loop ahora documenta las transiciones conectadas, el lienzo sin marco, la cabecera fija y los datos de ejemplo.
+
+### Enlaces
+- Web publicada: https://ginaguiot.github.io/Proyecto-WEB-Gina/
+- Repositorio: https://github.com/GinaGuiot/Proyecto-WEB-Gina
+
+### Verificación
+- Los cinco documentos actualizados se guardaron en la rama main.
+- Pendiente confirmar los enlaces y contenidos finales desde el repositorio.
