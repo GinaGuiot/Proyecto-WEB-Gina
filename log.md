@@ -129,3 +129,12 @@ Sustituir la página inicial del repositorio por la web CHROMA y mantener actual
 
 ### Verificación
 - Publicación de GitHub Pages pendiente de finalizar.
+
+
+## Sesión — 2026-11-25 (ajuste de visibilidad y panorámica)
+
+### Cambios realizados
+- Organizada la vista conjunta de las tres composiciones en horizontal, también en móvil.
+- Ocultadas las composiciones inactivas cuando una se despliega a pantalla completa.
+- Añadida una transición por desvanecimiento para que no se superpongan dos gráficos; la línea de conexión conserva la continuidad del recorrido.
+- Actualizadas la ficha del loop 2 y la descripción del README.
