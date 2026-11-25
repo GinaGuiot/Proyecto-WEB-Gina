@@ -89,38 +89,43 @@ canvas{display:block;width:100%;height:100%}
   <div class="intro">
     <h1>Tu música también tiene color.</h1>
     <p>CHROMA convierte mis hábitos de escucha de Spotify, de 2018 a 2026, en una identidad visual. Cada escucha forma parte de un paisaje visual que refleja mi relación personal con la música.</p>
-    <a class="btn" href="#composiciones">Empezar <span aria-hidden="true">↓</span></a>
+    <a class="btn" href="#composiciones">Ver mi universo musical <span aria-hidden="true">↓</span></a>
   </div>
   <footer><span>by Gina Guiot Martí</span><span>2026–2027</span></footer>
 </div>
 
-<section class="comp" id="composiciones" aria-labelledby="t1">
-  <div class="stage">
-    <canvas id="c1" role="img" aria-label="Círculos de colores que laten y orbitan despacio. Cada uno es un artista; al pasar el ratón se ve su nombre, género y minutos de escucha."></canvas>
-    <div id="tip" role="status"></div>
-  </div>
-  <div class="cap">
-    <div><h2 id="t1">Un universo de artistas</h2><div class="key" id="key"></div></div>
-    <div><p>Cada círculo es un artista. El color marca su género y el tamaño, el tiempo que lo has escuchado. Pasa el ratón por encima para ver los detalles.</p>
-    <small>Datos de ejemplo: nombres, géneros y minutos son inventados hasta conectar tu exportación de Spotify.</small></div>
-  </div>
-</section>
-
-<section class="comp" aria-labelledby="t2">
-  <div class="stage"><canvas id="c2" role="img" aria-label="Anillos concéntricos, uno por año de 2018 a 2026, que se van encendiendo uno tras otro"></canvas></div>
-  <div class="cap">
-    <div><h2 id="t2">Anillos por año</h2></div>
-    <div><p>Cada anillo es un año. Los puntos son artistas y su tamaño depende de las horas escuchadas. La huella se va encendiendo año a año.</p>
-    <small>Propuesta por validar: confirmar el periodo y los datos reales de Spotify.</small></div>
-  </div>
-</section>
-
-<section class="comp" aria-labelledby="t3">
-  <div class="stage"><canvas id="c3" role="img" aria-label="Matriz provisional que representa la actividad de escucha por día y hora, con celdas de color de ejemplo"></canvas></div>
-  <div class="cap">
-    <div><h2 id="t3">Un ritmo semanal</h2></div>
-    <div><p>Propuesta: una matriz que cruza los días de la semana con las horas del día. La intensidad muestra minutos o reproducciones y el color puede distinguir géneros.</p>
-    <small>Visualización provisional con datos de ejemplo. Requiere marcas de fecha y hora en la exportación de Spotify.</small></div>
+<section class="visual-story" id="composiciones" aria-label="Tres composiciones que se despliegan al hacer scroll">
+  <div class="story-pin" id="storyPin">
+    <div class="overview-intro" id="overviewIntro">
+      <p class="story-kicker">EL UNIVERSO CHROMA · 01—03</p>
+      <h2>Tres maneras de mirar<br>una misma escucha.</h2>
+    </div>
+    <svg class="connections" id="connections" aria-hidden="true">
+      <path id="connector" d=""></path>
+      <circle id="connectorDot" r="4" cx="0" cy="0"></circle>
+    </svg>
+    <article class="visual-panel" data-panel="0">
+      <canvas id="c1" role="img" aria-label="Círculos de colores que laten y orbitan despacio. Cada uno es un artista; al explorar uno se ve su nombre, género y minutos de escucha."></canvas>
+      <div id="tip" role="status"></div>
+    </article>
+    <article class="visual-panel" data-panel="1">
+      <canvas id="c2" role="img" aria-label="Anillos concéntricos de muestra, uno por año de 2018 a 2026."></canvas>
+    </article>
+    <article class="visual-panel" data-panel="2">
+      <canvas id="c3" role="img" aria-label="Matriz de muestra de la actividad de escucha por día y hora."></canvas>
+    </article>
+    <div class="overview-titles" id="overviewTitles" aria-hidden="true">
+      <span>01 · Universo de artistas</span>
+      <span>02 · Anillos por año</span>
+      <span>03 · Ritmo semanal</span>
+    </div>
+    <div class="story-copy" id="storyCopy" aria-live="polite">
+      <p class="story-kicker" id="storyNumber"></p>
+      <h2 id="storyTitle"></h2>
+      <p id="storyDescription"></p>
+      <small id="storyNote"></small>
+    </div>
+    <div class="scroll-hint" id="scrollHint"><span>SCROLL PARA DESPLEGAR</span><i aria-hidden="true">↓</i></div>
   </div>
 </section>
 
@@ -137,8 +142,8 @@ document.getElementById("key").innerHTML=G.map((c,i)=>`<span><i style="backgroun
 function setup(id){
   const cv=document.getElementById(id),ctx=cv.getContext("2d");
   const o={cv,ctx,w:0,h:0};
-  const fit=()=>{const d=Math.min(devicePixelRatio||1,2),r=cv.getBoundingClientRect();
-    o.w=r.width;o.h=r.height;cv.width=r.width*d;cv.height=r.height*d;ctx.setTransform(d,0,0,d,0,0)};
+  const fit=()=>{const d=Math.min(devicePixelRatio||1,2),w=cv.clientWidth,h=cv.clientHeight;
+    o.w=w;o.h=h;cv.width=w*d;cv.height=h*d;ctx.setTransform(d,0,0,d,0,0)};
   fit();new ResizeObserver(fit).observe(cv);return o;
 }
 
@@ -149,7 +154,7 @@ const arts=Array.from({length:36},()=>({m:Math.pow(R1(),2.2),g:Math.floor(R1()*6
 arts.forEach((a,i)=>{a.name="Artista "+String(i+1).padStart(2,"0");a.min=Math.round(90+a.m*4200)});
 let hover=-1;
 function draw1(t){
-  const {ctx,w,h}=L1;ctx.fillStyle=C.bg;ctx.fillRect(0,0,w,h);
+  const {ctx,w,h}=L1;ctx.clearRect(0,0,w,h);
   const s=Math.min(w,h),cx=w/2,cy=h/2,step=s*0.075;
   arts.forEach((a,i)=>{
     const rr=step*Math.sqrt(i+.6)*1.12,ang=i*2.39996;
@@ -184,7 +189,7 @@ const hrs=[12,37,52,64,88,120,95,70,45]; // ejemplo
 const rings=years.map((y,i)=>({y,dir:i%2?-1:1,k:1+(i%2),p:R2()*TAU,
   dots:Array.from({length:10+Math.round(hrs[i]/6)},()=>({a:R2()*TAU,s:.4+R2()*.6,g:Math.floor(R2()*6)}))}));
 function draw2(t){
-  const {ctx,w,h}=L2;ctx.fillStyle=C.bg;ctx.fillRect(0,0,w,h);
+  const {ctx,w,h}=L2;ctx.clearRect(0,0,w,h);
   const s=Math.min(w,h),cx=w/2,cy=h/2,n=rings.length;
   const ph=(t%T2)/T2, fade=1-sm(cl((ph-.94)/.06)), pos=ph/.94*n;
   const cur=Math.min(n-1,Math.floor(pos));
@@ -208,7 +213,7 @@ function draw2(t){
 /* LOOP 3 · ritmo semanal (propuesta ilustrativa) */
 const L3=setup("c3"),days=["L","M","X","J","V","S","D"];
 function draw3(t){
-  const {ctx,w,h}=L3;ctx.fillStyle=C.bg;ctx.fillRect(0,0,w,h);
+  const {ctx,w,h}=L3;ctx.clearRect(0,0,w,h);
   const left=38,right=16,top=24,bottom=28,gapX=8,gapY=4;
   const cellW=(w-left-right-gapX*6)/7,cellH=(h-top-bottom-gapY*23)/24;
   ctx.textAlign="center";ctx.textBaseline="middle";ctx.font='14px "Instrument Serif",Georgia,serif';ctx.fillStyle=C.ink;
@@ -229,7 +234,119 @@ function draw3(t){
 function frame(ms){const t=ms/1000;draw1(t);draw2(t);draw3(t);requestAnimationFrame(frame)}
 if(still){const go=()=>{draw1(6);draw2(24);draw3(0)};go();addEventListener("resize",go);document.fonts.ready.then(go)}
 else requestAnimationFrame(frame);
-</script>
+
+/* El scroll transforma la vista conjunta en una secuencia de composiciones a pantalla completa. */
+const story=document.querySelector(".visual-story");
+const pin=document.getElementById("storyPin");
+const panels=[...document.querySelectorAll(".visual-panel")];
+const overview=document.getElementById("overviewIntro");
+const overviewTitles=document.getElementById("overviewTitles");
+const copy=document.getElementById("storyCopy");
+const scrollHint=document.getElementById("scrollHint");
+const connector=document.getElementById("connector");
+const connectorDot=document.getElementById("connectorDot");
+const connectionSvg=document.getElementById("connections");
+const storyNumber=document.getElementById("storyNumber");
+const storyTitle=document.getElementById("storyTitle");
+const storyDescription=document.getElementById("storyDescription");
+const storyNote=document.getElementById("storyNote");
+const stories=[
+  {number:"COMPOSICIÓN 01 / 03",title:"Un universo de artistas",description:"Cada círculo es un artista. Explora su nombre, género y minutos de escucha.",note:"Datos de ejemplo · la exportación real de Spotify aún está pendiente."},
+  {number:"COMPOSICIÓN 02 / 03",title:"Anillos por año",description:"Una propuesta para observar cómo cambian las escuchas a lo largo del tiempo.",note:"Visualización provisional · periodo y valores por validar."},
+  {number:"COMPOSICIÓN 03 / 03",title:"Un ritmo semanal",description:"Una propuesta para descubrir en qué momentos de la semana aparece la música.",note:"Visualización provisional · requiere fechas y horas de la exportación."}
+];
+let lastStory=-2, scrollQueued=false;
+const mix=(a,b,t)=>a+(b-a)*t;
+function clamp01(v){return Math.max(0,Math.min(1,v))}
+function smooth(t){return t*t*(3-2*t)}
+function overviewLayout(index,w,h,mobile){
+  return mobile?{x:0,y:(index-1)*h*.265,s:.235,o:.96}:{x:(index-1)*w*.315,y:0,s:.28,o:.96};
+}
+function stateLayout(state,index,w,h){
+  if(index===state)return{x:0,y:0,s:1,o:1};
+  return{x:index<state?-w*.39:w*.39,y:0,s:.19,o:.46};
+}
+function curveBetween(a,b){
+  const bend=Math.max(42,Math.abs(b.x-a.x)*.22);
+  const direction=b.x>=a.x?1:-1;
+  return "M "+a.x+" "+a.y+" C "+(a.x+direction*bend)+" "+(a.y-bend*.7)+", "+(b.x-direction*bend)+" "+(b.y-bend*.7)+", "+b.x+" "+b.y;
+}
+function updateStory(){
+  scrollQueued=false;
+  const rect=story.getBoundingClientRect();
+  const travel=Math.max(1,story.offsetHeight-pin.clientHeight);
+  const progress=clamp01(-rect.top/travel);
+  const w=pin.clientWidth,h=pin.clientHeight,mobile=w<700;
+  connectionSvg.setAttribute("viewBox","0 0 "+w+" "+h);
+  const introEnd=.105, expandEnd=.18;
+  let route=0, expand=0;
+  if(progress>introEnd){
+    expand=clamp01((progress-introEnd)/(expandEnd-introEnd));
+    route=clamp01((progress-expandEnd)/(1-expandEnd))*2;
+  }
+  const nearest=progress<=introEnd?-1:Math.min(2,Math.round(route));
+  if(nearest!==lastStory){
+    lastStory=nearest;
+    if(nearest<0){
+      copy.style.opacity="0";
+    }else{
+      const story=stories[nearest];
+      storyNumber.textContent=story.number;
+      storyTitle.textContent=story.title;
+      storyDescription.textContent=story.description;
+      storyNote.textContent=story.note;
+      copy.style.opacity="1";
+    }
+  }
+  overview.style.opacity=String(1-clamp01((progress-.035)/.10));
+  overviewTitles.style.opacity=String(1-clamp01((progress-.055)/.10));
+  scrollHint.style.opacity=String(1-clamp01((progress-.075)/.035));
+  let layoutNow=[];
+  panels.forEach((panel,index)=>{
+    let layout;
+    if(progress<=introEnd){
+      layout=overviewLayout(index,w,h,mobile);
+    }else if(progress<expandEnd){
+      const from=overviewLayout(index,w,h,mobile),to=stateLayout(0,index,w,h);
+      const t=still?(expand<.5?0:1):smooth(expand);
+      layout={x:mix(from.x,to.x,t),y:mix(from.y,to.y,t),s:mix(from.s,to.s,t),o:mix(from.o,to.o,t)};
+    }else{
+      const state=Math.min(1,Math.floor(route)),fraction=route-state;
+      const toState=Math.min(2,state+1);
+      const t=still?(fraction<.5?0:1):smooth(fraction);
+      const from=stateLayout(state,index,w,h),to=stateLayout(toState,index,w,h);
+      layout={x:mix(from.x,to.x,t),y:mix(from.y,to.y,t),s:mix(from.s,to.s,t),o:mix(from.o,to.o,t)};
+    }
+    layoutNow.push(layout);
+    panel.style.transform="translate3d("+layout.x+"px,"+layout.y+"px,0) scale("+layout.s+")";
+    panel.style.opacity=String(layout.o);
+    panel.style.zIndex=String(Math.round(layout.s*10)+1);
+    const interactive=progress>introEnd&&layout.s>.96;
+    panel.classList.toggle("is-current",interactive);
+  });
+  const center=i=>({x:w/2+layoutNow[i].x,y:h/2+layoutNow[i].y});
+  let pathData;
+  if(progress<=introEnd){
+    const p0=center(0),p1=center(1),p2=center(2);
+    pathData=curveBetween(p0,p1)+" "+curveBetween(p1,p2).replace(/^M [^ ]+ [^ ]+ /,"");
+    connectorDot.setAttribute("cx",mix(p0.x,p1.x,.5));
+    connectorDot.setAttribute("cy",mix(p0.y,p1.y,.5));
+  }else{
+    const active=Math.min(1,Math.floor(route)),next=active+1;
+    const a=center(active),b=center(next),fraction=route-active;
+    pathData=curveBetween(a,b);
+    connectorDot.setAttribute("cx",mix(a.x,b.x,still?(fraction<.5?0:1):fraction));
+    connectorDot.setAttribute("cy",mix(a.y,b.y,still?(fraction<.5?0:1):fraction));
+  }
+  connector.setAttribute("d",pathData);
+  connector.style.strokeDashoffset=String(-progress*260);
+}
+function requestStoryUpdate(){
+  if(!scrollQueued){scrollQueued=true;requestAnimationFrame(updateStory)}
+}
+addEventListener("scroll",requestStoryUpdate,{passive:true});
+addEventListener("resize",requestStoryUpdate);
+requestStoryUpdate();</script>
 </body>
 </html>
 
