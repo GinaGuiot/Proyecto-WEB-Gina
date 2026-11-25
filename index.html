@@ -299,7 +299,7 @@ const mix=(a,b,t)=>a+(b-a)*t;
 function clamp01(v){return Math.max(0,Math.min(1,v))}
 function smooth(t){return t*t*(3-2*t)}
 function overviewLayout(index,w,h,mobile){
-  const scale=mobile?.27:.29;
+  const scale=mobile ? .27 : .29;
   return{x:(index-1)*w*.315,y:0,s:scale,o:.96};
 }
 function stateLayout(state,index,w,h){
