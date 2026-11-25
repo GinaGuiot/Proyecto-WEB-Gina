@@ -97,3 +97,12 @@ Sustituir la página inicial del repositorio por la web CHROMA y mantener actual
 
 ### Verificación
 - Los dos archivos están creados en la raíz del repositorio.
+
+
+## Sesión — 2026-11-25 (ajuste de la introducción)
+
+### Cambios realizados
+- Se mantuvo la primera frase de la portada y se sustituyó la explicación específica del universo de artistas por una frase general sobre la relación personal con la música.
+
+### Verificación
+- El cambio quedó publicado en index.html de main.
