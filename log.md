@@ -106,3 +106,16 @@ Sustituir la página inicial del repositorio por la web CHROMA y mantener actual
 
 ### Verificación
 - El cambio quedó publicado en index.html de main.
+
+
+## Sesión — 2026-11-25 (actualización del recorrido visual)
+
+### Cambios realizados
+- Cambiado el CTA de portada a «Ver mi universo musical».
+- Convertida la zona de composiciones en una secuencia inmersiva: las tres aparecen juntas y se expanden una a una con el scroll.
+- La visualización ocupa el lienzo completo sin marco rectangular; la explicación queda separada del lienzo.
+- La cabecera con el logo pequeño permanece fija durante el recorrido.
+- Actualizadas las fichas de ambos loops y README.md para reflejar el nuevo diseño.
+
+### Verificación
+- El flujo de publicación de GitHub Pages se comprobará tras los cambios.
